@@ -5,6 +5,8 @@ const forecast = require('./utils/forecast');
 const geocode = require('./utils/geocode');
 
 const app = express();
+const port = process.env.PORT || 3000;
+
 const publicDirPath = path.resolve(__dirname, '../public');
 const viewsPath = path.resolve(__dirname,'../templates/views');
 const partialsPath = path.resolve(__dirname, '../templates/partials');
@@ -79,11 +81,6 @@ app.get('/weather', (req, res) => {
             }
         })
 
-        // return res.render('weather',{
-        //     forecast:'sunny',
-        //     address:req.query.address,
-        //     name: 'Swapnil'
-        // });
     }
     else{
         return res.send({error:'Address is missing!'})
@@ -98,18 +95,6 @@ app.get('/*', (req, res) => {
     });
 })
 
-app.listen(3000, () =>{
-    console.error("Listening on port 3000");
+app.listen(port, () =>{
+    console.error("Listening on port "+port);
 })
-
-// app.get('', (req, res) => {
-//     res.send('Home page!');
-// });
-
-// app.get('/help', (req, res) => {
-//     res.send(app.use(express.static(helpPath)));
-// });
-
-// app.get('/about', (req, res) => {
-//     res.send('<h1>About page</h1>');
-// });
