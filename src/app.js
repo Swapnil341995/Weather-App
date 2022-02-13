@@ -20,7 +20,7 @@ app.use(express.static(publicDirPath));//added to fix MIME CSS issue and image l
 app.get('', (req, res) => {
     res.render('index', {
         title: 'Weather',
-        name: 'Swapnil B'
+        name:'Swapnil Bharude'
     });
 })
 
@@ -28,14 +28,14 @@ app.get('/help', (req, res) => {
     res.render('help', {
         title:'Help',
         comment:'Let\'s help each other',
-        name:'Swapnil B'
+        name:'Swapnil Bharude'
     });
 });
 
 app.get('/help/*', (req, res) => {
     res.render('404', {
         title:'404',
-        name:'Swapnil B',
+        name:'Swapnil Bharude',
         errorMessage:'Help article not found'
     })
 });
@@ -43,7 +43,7 @@ app.get('/help/*', (req, res) => {
 app.get('/about', (req, res) => {
     res.render('about',{
         title:'About Me',
-        name:'Swapnil B'
+        name:'Swapnil Bharude'
     })
 })
 
