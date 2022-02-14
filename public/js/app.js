@@ -1,4 +1,16 @@
 const place = document.querySelector('input');
+
+document.querySelector('input').bind('input', function() {
+    var c = this.selectionStart,
+        r = /[^a-z0-9 .]/gi,
+        v = $(this).val();
+    if(r.test(v)) {
+      $(this).val(v.replace(r, ''));
+      c--;
+    }
+    this.setSelectionRange(c, c);
+  });
+
 const form = document.querySelector('form');
 
 let messageOne = document.querySelector('#message-1')
@@ -17,13 +29,9 @@ form.addEventListener('submit', (e)=>{
         fetch('/weather?address='+location).then((res)=>{
             res.json().then((data)=>{
                 if(data.error){
-                    // console.log('Error',data.error);
                     messageOne.textContent = data.error;
                 }
                 else{
-                    // console.log(data.forecast);
-                    // console.log(data.location);
-                    // console.log(data.placeName);
                     messageOne.textContent = data.location;
                     messageTwo.textContent = data.forecast;
                 }
@@ -31,7 +39,6 @@ form.addEventListener('submit', (e)=>{
         });
     }
     else{
-        // console.log('Incorrect location.');
         messageOne.textContent = 'Incorrect location';
     }
 })
