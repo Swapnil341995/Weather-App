@@ -13,6 +13,7 @@ const form = document.querySelector('form');
 
 let messageOne = document.querySelector('#message-1')
 let messageTwo = document.querySelector('#message-2')
+let messageThree = document.querySelector('#message-3')
 messageOne.textContent = '';
 messageTwo.textContent = '';
 
@@ -30,7 +31,7 @@ form.addEventListener('submit', (e)=>{
                     messageOne.textContent = data.error;
                 }
                 else{
-                    messageOne.textContent = data.location;
+                    messageOne.textContent = data.placeName;
                     messageTwo.textContent = data.forecast;
                 }
             })
